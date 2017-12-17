@@ -11,8 +11,6 @@
   "dependencies": {
     "@jscad/openjscad": "^1.4.0",
     "express": "^4.16.2",
-    // "johnny-five": "^0.11.7",
-    // "scale-number-range": "^1.0.3",
     "socket.io": "^2.0.4"
   },
   "repository" : {
