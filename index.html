@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js" lang="en-EN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        
+
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header>
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-md-12 text-center mt-5 mt-3">
+        				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.28 21.28"  width="100px">
+							<title>KM</title>
+							<g id="Layer_2" data-name="Layer 2">
+								<polyline points="17.06 21.28 21.28 21.28 21.28 0 17.06 0 10.39 17.09 7.96 9.95 11.66 0 7.55 0 4.25 8.49 4.26 8.4 4.25 0 0 0 0 21.28 4.25 21.28 4.25 12.8 4.25 11.72 8.09 21.28 13.29 21.28 17.06 11.68"/>
+							</g>
+						</svg>
+					</div>
+					<div class="col-md-12 text-center mb-3 pb-3">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.71 15.46"  width="100px">
+							<title>Devs</title>
+							<g id="Layer_2" data-name="Layer 2">
+								<path d="M3.55,13.62H2.86A3.14,3.14,0,0,1,.69,13,2.67,2.67,0,0,1,0,10.93v-3A2.66,2.66,0,0,1,.7,5.85a3.12,3.12,0,0,1,2.16-.64h2V1.85H6.24V13.62H4.89v-.39A2.29,2.29,0,0,1,3.55,13.62Zm1-1.56a.92.92,0,0,0,.27-.63v-5H2.69a1.37,1.37,0,0,0-.94.28,1,1,0,0,0-.32.81v3.7a1,1,0,0,0,.32.81,1.37,1.37,0,0,0,.94.28h1A1.06,1.06,0,0,0,4.54,12.06Z"/>
+								<path d="M9.93,13a2.67,2.67,0,0,1-.69-2.06v-3a2.85,2.85,0,0,1,.62-2.07,2.85,2.85,0,0,1,2.07-.62h.79a2.34,2.34,0,0,1,1.81.66,2.77,2.77,0,0,1,.61,1.94V10H10.67v1.26a1,1,0,0,0,.32.81,1.37,1.37,0,0,0,.94.28h2.67v1.26H12.1A3.14,3.14,0,0,1,9.93,13Zm3.82-5.5a1,1,0,0,0-1-1h-1a1.09,1.09,0,0,0-.85.28,1.21,1.21,0,0,0-.24.82V8.74h3.08Z"/>
+								<path d="M17.82,5.21h1.55l2,7.24,1.92-7.24h1.5l-2.42,8.4H20.26Z"/>
+								<path d="M32.27,13.09a2.93,2.93,0,0,1-1.87.52h-2.5V12.35h2.67a1.07,1.07,0,0,0,.69-.19.69.69,0,0,0,.24-.56v-.89c0-.5-.24-.76-.72-.76h-.62a2.59,2.59,0,0,1-1.76-.51,2.06,2.06,0,0,1-.58-1.62V7.33a1.93,1.93,0,0,1,.64-1.62,3,3,0,0,1,1.88-.5h2.25V6.47H30.16a1.08,1.08,0,0,0-.67.19.67.67,0,0,0-.25.56v.6a.7.7,0,0,0,.23.57.89.89,0,0,0,.58.18h.57a2.43,2.43,0,0,1,1.71.55,2.11,2.11,0,0,1,.59,1.62v.76A1.91,1.91,0,0,1,32.27,13.09Z"/>
+								<path d="M41.72,0h1.41l-6,15.46H35.74Z"/>
+								<path d="M50.63,8,45.32,5.68V4.14l6.39,3V8.91l-6.39,2.94V10.27Z"/>
+							</g>
+						</svg>
+        			</div>
+        		</div>
+        	</div>
+        </header>
+        <section class="content">
+        	<div class="container">
+        		<div class="row">
+        			<div class="col-md-12">
+        				<h1 class="text-center">Generative Design Example</h1>
+        			</div>
+        		</div>
+                <div class="row">
+                     <div class="col-md-12 mt-5">
+                       <div class="jscad-container">
+                        <div id="header">
+                          <div id="errordiv">hello</div>
+                        </div>
+
+                    <!-- setup display of the viewer, i.e. canvas -->
+                        <div oncontextmenu="return false;" id="viewerContext" design-url="/logo_big.jscad"></div>
+
+                    <!-- setup display of the status, as required by OpenJSCAD.js -->
+                    <!-- set display: block to display this -->
+                        <div id="tail">
+                          <div id="statusdiv"></div>
+                          <div id="filedropzone">
+                            <div id="filedropzone_empty">
+                            </div>
+                            <div id="filedropzone_input">
+                              <p>
+                                <label class="input-control">Add Supported Files: <input type="file" id="files-input" accept="*/*" multiple="1"></input></label>
+                              </p>
+                            </div>
+                            <div id="filedropzone_filled">
+                              <span id="currentfile">...</span>
+                              <div id="filebuttons">
+                                <button id="getstlbutton" style="display:none" onclick="getStl();">Get STL</button>
+                                <button id="reloadAllFiles">Reload</button>
+                               <!--button onclick="parseFile(gCurrentFile,true,false);">Debug (see below)</button-->
+                                <label for="autoreload">Auto Reload</label><input type="checkbox" name="autoreload" value="" id="autoreload"">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        	</div>
+        </section>
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        
+        <!-- bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	
+		<script src="/socket.io/socket.io.js"></script>
+        <script src="./client.js"></script>
+
+        <!-- Required for OpenJScad -->
+        <link rel="stylesheet" href="./style.css" type="text/css">
+        <link rel="stylesheet" href="./big.css" type="text/css">
+        <script src="./index.js"></script>
+
+        
+    </body>
+</html>

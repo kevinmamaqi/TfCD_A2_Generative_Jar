@@ -1,0 +1,18 @@
+{
+  "name": "generative.js",
+  "version": "1.0.0",
+  "description": "TfCD Assignment 2 - Generative Design Exploration",
+  "main": "generative.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Mamaqi Kapllani",
+  "license": "MIT",
+  "dependencies": {
+    "@jscad/openjscad": "^1.4.0",
+    "express": "^4.16.2",
+    "johnny-five": "^0.11.7",
+    "scale-number-range": "^1.0.3",
+    "socket.io": "^2.0.4"
+  }
+}
