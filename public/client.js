@@ -7,4 +7,8 @@
         socket.emit('join', 'Client is connected!');
     });
 
+    socket.on('temperature', function(celsius){
+      document.getElementById("temperature").innerHTML = celsius;
+    });
+
 }());

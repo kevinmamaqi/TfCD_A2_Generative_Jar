@@ -56,6 +56,9 @@ board.on("ready", function() {
     	var celsius = KtoC(temperature);
     	console.log("Celsius:" + celsius);
 
+    	//Send values to the web
+    	io.emit('temperature', celsius);
+
     	var colorValue = scale(celsius, 0, 35, 0, 999999);
     	console.log(colorValue);
     	
@@ -65,8 +68,8 @@ board.on("ready", function() {
 	io.on('connection', function(client) {
 		// Client joined.
 	    client.on('join', function(handshake) {
-	      console.log(handshake);
-	    });
+	    console.log(handshake);
+    });
 
 
     
