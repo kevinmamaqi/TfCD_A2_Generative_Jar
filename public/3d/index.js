@@ -87541,41 +87541,43 @@ module.exports = {
 'use strict';
 
 // == OpenJSCAD.org, Copyright (c) 2013-2016, Licensed under MIT License
-// const { setUpEditor } = require('./editor')
-var _require = require('./dragDrop/ui-drag-drop'),
-    setupDragDrop = _require.setupDragDrop; // toggleAutoReload
+var _require = require('./editor'),
+    setUpEditor = _require.setUpEditor;
 
-var _require2 = require('./detectBrowser'),
-    detectBrowser = _require2.detectBrowser;
+var _require2 = require('./dragDrop/ui-drag-drop'),
+    setupDragDrop = _require2.setupDragDrop; // toggleAutoReload
 
-var _require3 = require('./urlHelpers'),
-    getUrlParams = _require3.getUrlParams;
+var _require3 = require('./detectBrowser'),
+    detectBrowser = _require3.detectBrowser;
 
-var _require4 = require('./examples'),
-    createExamples = _require4.createExamples,
-    fetchExample = _require4.fetchExample,
-    loadInitialExample = _require4.loadInitialExample;
+var _require4 = require('./urlHelpers'),
+    getUrlParams = _require4.getUrlParams;
 
-var _require5 = require('./options'),
-    createOptions = _require5.createOptions,
-    getOptions = _require5.getOptions;
+var _require5 = require('./examples'),
+    createExamples = _require5.createExamples,
+    fetchExample = _require5.fetchExample,
+    loadInitialExample = _require5.loadInitialExample;
+
+var _require6 = require('./options'),
+    createOptions = _require6.createOptions,
+    getOptions = _require6.getOptions;
 
 var AlertUserOfUncaughtExceptions = require('./errorDispatcher');
 
-var _require6 = require('../jscad/version'),
-    version = _require6.version;
+var _require7 = require('../jscad/version'),
+    version = _require7.version;
 
 var Processor = require('../jscad/processor');
 
 var me = document.location.toString().match(/^file:/) ? 'web-offline' : 'web-online';
 var browser = detectBrowser();
 
-// const showEditor = true
+var showEditor = true;
 var proxyUrl = './remote.pl?url=';
 // const proxyUrl = './remote.php?url='
 
 var gProcessor = null;
-// var gEditor = null
+var gEditor = null;
 
 var memFs = []; // associated array, contains file content in source memFs[i].{name,source}
 var currentFiles = []; // linear array, contains files (to read)
@@ -87609,7 +87611,7 @@ function init() {
   getUrlParams(document.URL);
 
   gProcessor = new Processor(document.getElementById('viewerContext'));
-  // gEditor = setUpEditor(undefined, gProcessor)
+  gEditor = setUpEditor(undefined, gProcessor);
   // FIXME: temporary hack
 
   // major DIVs expected
@@ -87793,7 +87795,7 @@ function init() {
       var dropZoneText = browser === 'chrome' && me === 'web-online' ? ', or folder with jscad files ' : '';
       document.getElementById('filedropzone_empty').innerHTML = 'Drop one or more supported files\n           ' + dropZoneText + '\n           here (see <a style=\'font-weight: normal\' href=\'https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#Maintaining_Larger_Projects\' target=_blank>details</a>)\n           <br>or directly edit OpenJSCAD or OpenSCAD code using the editor.';
 
-      var _setupDragDrop = setupDragDrop(me, { memFs: memFs, gProcessor: gProcessor /*gEditor*/ }),
+      var _setupDragDrop = setupDragDrop(me, { memFs: memFs, gProcessor: gProcessor, gEditor: gEditor }),
           toggleAutoReload = _setupDragDrop.toggleAutoReload,
           reloadAllFiles = _setupDragDrop.reloadAllFiles;
 
@@ -87816,7 +87818,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   init();
 });
 
-},{"../jscad/processor":423,"../jscad/version":424,"./detectBrowser":426,"./dragDrop/ui-drag-drop":428,"./errorDispatcher":431,"./examples":432,"./options":434,"./urlHelpers":435}],434:[function(require,module,exports){
+},{"../jscad/processor":423,"../jscad/version":424,"./detectBrowser":426,"./dragDrop/ui-drag-drop":428,"./editor":430,"./errorDispatcher":431,"./examples":432,"./options":434,"./urlHelpers":435}],434:[function(require,module,exports){
 'use strict';
 
 var _require = require('./cookies'),

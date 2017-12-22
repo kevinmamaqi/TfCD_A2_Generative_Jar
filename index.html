@@ -65,13 +65,13 @@
                         </div>
 
                     <!-- setup display of the viewer, i.e. canvas oncontextmenu="return false;" -->
-                        <div id="viewerContext" design-url="./generative.jscad"></div>
+                        <div oncontextmenu="return false;" id="viewerContext" design-url="3d/shape_generator.js"></div>
 
-                    <!-- setup display of the status, as required by OpenJSCAD.js -->
+                        <div id="editor" style="display:none;"></div>
                     <!-- set display: block to display this -->
                         <div id="tail">
                           <div id="statusdiv"></div>
-                          <div id="filedropzone">
+                          <div id="filedropzone" style="display:none;">
                             <div id="filedropzone_empty">
                             </div>
                             <div id="filedropzone_input">
@@ -82,7 +82,7 @@
                             <div id="filedropzone_filled">
                               <span id="currentfile">...</span>
                               <div id="filebuttons">
-                                <button id="getstlbutton" style="display:none" onclick="getStl();">Get STL</button>
+                                <button id="getstlbutton" onclick="getStl();">Get STL</button>
                                 <button id="reloadAllFiles">Reload</button>
                                <!--button onclick="parseFile(gCurrentFile,true,false);">Debug (see below)</button-->
                                 <label for="autoreload">Auto Reload</label><input type="checkbox" name="autoreload" value="" id="autoreload"">
@@ -112,8 +112,7 @@
         <script src="./client.js"></script>
 
         <!-- Required for OpenJScad -->
-        <link rel="stylesheet" href="./style.css" type="text/css">
-        <link rel="stylesheet" href="./big.css" type="text/css">
+        <link rel="stylesheet" href="./style.css" type="text/css"> 
         <script src="./index.js"></script>
 
         
