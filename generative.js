@@ -3,15 +3,17 @@ const app 		= express();
 const server 	= require('http').createServer(app);
 const io 		= require('socket.io')(server);
 
+var bezier		= require("bezier-js");
 var scale 		= require('scale-number-range');
 var five 		= require("johnny-five"),
     board 		= new five.Board();
 
+const fs = require('fs')
 
 
 
 /*
- * Generate the server.
+ * Generate the server and communication between client and server
  */
 app.use(express.static(__dirname + '/public'))
 app.get('/', function(req, res) {
@@ -22,13 +24,79 @@ const port = process.env.PORT || 3000;
 server.listen(port);
 console.log(`Server listening on http://localhost:${port}`);
 
+// Confirm that client (user from the browser) and server (this file) are communicating.
+io.on('connection', function(client) {
+	
+	// Client joined.
+	// Handshake function confirms that a client has joined.
+    client.on('join', function(handshake) {
+    console.log(handshake);
+	});
+
+    // This function executes everytime the user clicks the big blue button.
+    client.on('clickevento', function(data) {
+		
+    	// number of slices we use to create the 3D model.
+    	// It is also the number of points we generate in our Bezier curves in order to have the same amount
+		numberOfSlices = Math.round(data.height*1.5) || 75;
+
+
+		// Generates random positions for each point of the Bezier Curve.
+		// We are using Bezier Curves because it is easier to gnerate an uniform and random number distribution with this method.
+		// First we create 2 random points and 2 random control points, then the curve and divide it into the slices that we are gonna generate.
+		// Finally 
+		var x1 = Math.floor(Math.random() * 200) + 1;
+		var x2 = Math.floor(Math.random() * 200) + 1;
+		var x3 = Math.floor(Math.random() * 200) + 1;
+		var x4 = Math.floor(Math.random() * 200) + 1;
+		
+		var y1 = Math.floor(Math.random() * 200) + 1;
+		var y2 = Math.floor(Math.random() * 200) + 1;
+		var y3 = Math.floor(Math.random() * 200) + 1;
+		var y4 = Math.floor(Math.random() * 200) + 1;
+
+		var curve = new bezier(x1,y1 , x2,y2 , x3,y3 , x4,y4);	// Here we create the curve.
+
+		// Here we create the array (list of values) and prepare them to send to our 3D Model.
+		var scaleValues = [];
+		var rotationValues = [];
+		var LUT = curve.getLUT(numberOfSlices);
+		LUT.forEach(function(p) { 
+			scaleValues.push(scale(p.x,0,200,0.7,1.3));			// Scale down the result and store them in the array.
+			rotationValues.push(scale(p.y,0,200,0.7,1.3));  	// Scale down the result and store them in the array.
+		});
+
+		
+		// To scale the rgb values to set the color of our object.
+		var rgb = data.hex.match(/\d+/g);
+		R = scale(rgb[0],0,255,0,1) || 0.8;
+		G = scale(rgb[1],0,255,0,1) || 0.2;
+		B = scale(rgb[2],0,255,0,1) || 0.3;
+
+		// Check that the colors are not black (in case the sensor is not)
+		if (R === 0) {R = 0.8};
+		if (G === 0) {G = 0.2};
+		if (B === 0) {B = 0.3};
+
+		// Send color, scale and rotation to our figure in order to update it
+		io.emit('dataForParameters', {R: R, G: G, B: B, sValues: scaleValues, rValues: rotationValues });
+
+		});
+
+});
+
+
 /*
  * Johnny-Five code. It is used to control the arduino board.
  */
 board.on("ready", function() {
+	
+	// Print the message that arduino is connected and working
 	console.log('Arduino is ready.');
 
-	// Change the color of the logo to make it context aware.
+	
+	// Change the color of the figure to make it context aware.
+	// It can be seen in the logo changing color.
     var sensorValue= new five.Sensor({
 		pin: "A0",
 		freq: 500		// checks every 500 miliseconds the sensor Value. It can be changed.
@@ -86,19 +154,6 @@ board.on("ready", function() {
 
     	// Send values to the web. It changes the logo color (to visually see it) and the jar color.
     	io.emit('temperature', colors[closestkey]);
-
-    	
 	});
-
-    // Confirm that client (user from browser) and server (computer) are communicating.
-	io.on('connection', function(client) {
-		// Client joined.
-	    client.on('join', function(handshake) {
-	    console.log(handshake);
-    });
-
-
-    
-  });
+  
 });
-

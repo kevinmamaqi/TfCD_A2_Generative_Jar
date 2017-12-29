@@ -377,7 +377,7 @@ canvas {
 
 
 .jscad-container {
-  margin: 5px 15px 5px 5px; /* not inherited */
+  margin-top: -1px;
   padding: 20px; /* not inherited */
   color: Black;
   font-weight: bold;
@@ -506,4 +506,37 @@ canvas {
   /* float: right; */
   margin-left: 2em;
   display: inline;
+}
+
+#parametersdiv,
+#parametersdiv table{
+  visibility: hidden;
+  height: 0 !important;
+  position: fixed;
+}
+
+.user-control {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.user-control .col-md-4 {
+  padding: 15px;
+  border: 1px solid #000;
+}
+
+.user-control .col-md-4:last-child {
+  padding: 0;
+}
+
+.user-control .col-md-4 .form-group {
+  margin-bottom: 0;
+}
+
+#updateModel {
+  margin-top: 2.2rem;
+}
+
+#updateModel:hover {
+  cursor: pointer;
 }
